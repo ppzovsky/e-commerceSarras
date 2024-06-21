@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainHomeContainer: {
-    width: 365,
-    height: 850,
+    width: '100%',
+    height: 800,
     marginBottom: '40%',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -50,8 +50,9 @@ const styles = StyleSheet.create({
   },
   textOperation: {
     color: 'white',
-    marginBottom: -10,
-    marginTop: 20
+    marginBottom: 5,
+    marginTop: 15,
+    alignSelf: 'center'
   }, 
   containerCrudButtons: {
     width: '100%',
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     gap: 15,
     justifyContent: 'center',
     alignContent: 'center',
-    elevation: 10
+    elevation: 10,
   },
   crudButtons: {
     width: '45%',
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   },
   mainProductContainer: {
     gap: 10,
-    marginBottom: '15%'
+    marginBottom: '30%'
   },
   productContainer: {
     width: '90%',
@@ -89,6 +90,7 @@ const styles = StyleSheet.create({
     gap: 10,
     borderBottomRightRadius: 15,
     borderTopRightRadius: 15,
+    borderRadius: 15
   },
   imgProduct: {
     width: '25%',
@@ -99,12 +101,15 @@ const styles = StyleSheet.create({
   },
   textProductInfo: {
     color: 'white',
-    marginBottom: 10,
+    marginBottom: 5,
+    marginTop: 15
   },
   productInfo: {
-    width: '95%',
+    width: '80%',
+    height: '40%',
     alignContent: 'center',
     alignItems: 'center',
+
   },
   innerTextProduct: {
     padding: 3,
