@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import global from './Global'
 
 const styles = StyleSheet.create({
   mainContainer: {
