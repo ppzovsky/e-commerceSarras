@@ -3,7 +3,7 @@ import { View, TextInput, Image, Text, TouchableOpacity, Alert, ActivityIndicato
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import * as ImageManipulator from 'expo-image-manipulator';
-import axios, { AxiosError } from 'axios';
+import { buscaPorCordigo, cadastrarProduto } from '../../components/crud/crud';
 import styles from './styles';
 
 interface Produto {
@@ -15,7 +15,8 @@ interface Produto {
   foto: string | null;
 }
 
-const CadastroProduto: React.FC = () => {
+export default function Cadastro() {
+
   const [nome, setNome] = useState<string>('');
   const [descricao, setDescricao] = useState<string>('');
   const [preco, setPreco] = useState<string>('');
@@ -32,7 +33,7 @@ const CadastroProduto: React.FC = () => {
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
-      quality: 0.5,
+      quality: 1,
     });
 
     if (!result.canceled) {
@@ -45,27 +46,6 @@ const CadastroProduto: React.FC = () => {
       setFoto(manipResult.uri);
       const base64 = await FileSystem.readAsStringAsync(manipResult.uri, { encoding: FileSystem.EncodingType.Base64 });
       setFotoBase64(base64);
-    }
-  };
-
-  const verificarCodigoExistente = async (): Promise<boolean> => {
-    try {
-      const response = await axios.get(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos?codigo=${codigo}`);
-      return response.data.length > 0;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-        if (axiosError.response?.status === 404) {
-          return false;
-        } else {
-          console.error('Erro ao verificar código:', axiosError);
-          Alert.alert('Erro', 'Erro ao verificar código. Por favor, tente novamente.');
-        }
-      } else {
-        console.error('Erro ao verificar código:', error);
-        Alert.alert('Erro', 'Erro ao verificar código. Por favor, tente novamente.');
-      }
-      return true;
     }
   };
 
@@ -85,7 +65,7 @@ const CadastroProduto: React.FC = () => {
     setVerificandoCodigo(true);
     setIsLoading(true);
 
-    const codigoJaExiste = await verificarCodigoExistente();
+    const codigoJaExiste = await buscaPorCordigo({codigo});
     setVerificandoCodigo(false);
 
     if (codigoJaExiste) {
@@ -104,24 +84,16 @@ const CadastroProduto: React.FC = () => {
       foto: fotoBase64 ? `data:image/jpeg;base64,${fotoBase64}` : null,
     };
 
-    try {
-      const response = await axios.post('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos', novoProduto);
-      console.log('Produto cadastrado:', response.data);
-      Alert.alert('Produto cadastrado com sucesso!');
-      setNome('');
-      setDescricao('');
-      setPreco('');
-      setCodigo('');
-      setQtdEstoque('');
-      setFoto(null);
-      setFotoBase64(null);
-      setCodigoInvalido(false);
-    } catch (error) {
-      console.error('Erro ao cadastrar produto:', error);
-      Alert.alert('Erro', 'Erro ao cadastrar produto. Por favor, tente novamente.');
-    } finally {
-      setIsLoading(false);
-    }
+    const response = await cadastrarProduto(novoProduto);
+    setNome('');
+    setDescricao('');
+    setPreco('');
+    setCodigo('');
+    setQtdEstoque('');
+    setFoto(null);
+    setFotoBase64(null);
+    setCodigoInvalido(false);
+    setIsLoading(false);
   };
 
   return (
@@ -192,5 +164,3 @@ const CadastroProduto: React.FC = () => {
     </View>
   );
 };
-
-export default CadastroProduto;

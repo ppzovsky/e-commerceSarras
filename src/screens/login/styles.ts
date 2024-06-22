@@ -2,8 +2,11 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainContainerLogin: {
+    flex: 1,
     width: '75%',
     height: '50%',
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
   textEntry: {
     alignSelf: 'center',
