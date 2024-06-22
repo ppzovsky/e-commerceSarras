@@ -81,7 +81,15 @@ const styles = StyleSheet.create({
       backgroundColor: '#FFCB11',
       borderRadius: 17,
       alignItems: 'center',
-      alignSelf: 'center'
+      alignSelf: 'center',
+      shadowColor: 'black',
+      shadowOffset: {
+        width: 0,
+        height: 4,
+      },
+      shadowOpacity: 0.3,
+      shadowRadius: 4.65,
+      elevation: 8,
     },
     cadastroText: {
       color: 'black',
