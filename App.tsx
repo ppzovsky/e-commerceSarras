@@ -4,7 +4,7 @@ import global from './Global';
 import Search from './src/screens/search';
 
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <View style={global.mainContainer}>
       <Search/>
