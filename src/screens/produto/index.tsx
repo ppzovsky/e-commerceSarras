@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import ListaProduto from '../../components/flatlist/index';
+import SearchBar from '../../components/searchBar/index'
 import axios from 'axios';
 import { styles } from './styles';
 import { FontAwesome5 } from '@expo/vector-icons';
-
+import { getProdutos } from '../../components/crud/crud'
 export default function Produtos() {
-    const [produtos, setProdutos] = useState([]);
 
-    useEffect(() => {
-        async function getProdutos() {
-            try {
-                const response = await axios.get('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos');
-                setProdutos(response.data);
-            } catch (error) {
-                console.log(error);
-                alert('Erro ao carregar os produtos');
-            }
-        }
-
-        getProdutos();
-    }, []);
+    const { produtos } = getProdutos();
 
     return (
         <View style={styles.container}>
@@ -30,6 +18,7 @@ export default function Produtos() {
                 </TouchableOpacity>
                 <Text style={styles.titulo}>Produtos</Text>
             </View>
+            <SearchBar />
             <View style={styles.containerProdutos}>
                 {produtos.length > 0 ? (
                     <ListaProduto listaprodutos={produtos}/>
