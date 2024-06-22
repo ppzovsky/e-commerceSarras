@@ -21,8 +21,8 @@ innerContainerNav: {
   borderTopRightRadius: 40,
 },  
 mainButtonSearch: {
-  width: '90%',
-  height: '100%',
+  width: '95%',
+  height: '95%',
   borderRadius: 100,
   backgroundColor: '#FFCB11',
   justifyContent: 'center',
@@ -30,8 +30,8 @@ mainButtonSearch: {
 },
 backgroundButtonSearch: {
   marginTop: -60,
-  width: '17%',
-  height: '100%',
+  width: '20%',
+  height: '130%',
   borderRadius: 100,
   backgroundColor: '#313638',
   justifyContent: 'center',
