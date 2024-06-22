@@ -14,4 +14,6 @@ export default function App() {
       <Login />
     </View>
   );
-}
+};
+
+export default App;
