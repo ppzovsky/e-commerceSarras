@@ -81,16 +81,13 @@ const styles = StyleSheet.create({
   },
   mainProductContainer: {
     gap: 10,
-    marginBottom: '30%'
+    marginBottom: '30%',
+    height: '70%'
   },
-  productContainer: {
-    width: '90%',
-    flexDirection: 'row',
-    backgroundColor: '#232327',
-    gap: 10,
-    borderBottomRightRadius: 15,
-    borderTopRightRadius: 15,
-    borderRadius: 15
+  containerProdutos:{
+    width: 380,
+    height: '100%',
+    paddingVertical: 15,
   },
   imgProduct: {
     width: '25%',

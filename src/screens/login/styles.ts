@@ -2,8 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainContainerLogin: {
-    width: '75%',
-    height: '50%',
+    width: '100%',
+    height: 825,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   textEntry: {
     alignSelf: 'center',
@@ -12,7 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   formContainer: {
-    width: '100%',
+    width: '85%',
     height: 400,
     justifyContent: 'space-between',
   },
@@ -30,6 +32,10 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: 'black',
     padding: 15,
+  },
+  buttons: {
+    marginTop: '15%',
+    gap: 15
   },
   buttonLogin: {
     width: '100%',

@@ -7,11 +7,11 @@ import Login from './src/screens/login/index'
 export default function App() {
   return (
     <View style={global.mainContainer}>
-       <StatusBar 
+      <StatusBar 
         barStyle="light-content" 
         backgroundColor="#FFCB11"
       />
-      <Home />
+      <Login />
     </View>
   );
 }
