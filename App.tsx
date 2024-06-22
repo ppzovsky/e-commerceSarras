@@ -1,17 +1,18 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Perfil from './src/screens/perfil/index';
+import { StyleSheet, Text, View, StatusBar  } from 'react-native';
+import Produtos from './src/screens/produto/index';
+import global from './Global';
+import Home from './src/screens/home/index'
+import Login from './src/screens/login/index'
 
-const Stack = createNativeStackNavigator();
-
-const App: React.FC = () => {
+export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Perfil" component={Perfil} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <View style={global.mainContainer}>
+      <StatusBar 
+        barStyle="light-content" 
+        backgroundColor="#FFCB11"
+      />
+      <Login />
+    </View>
   );
 };
 
