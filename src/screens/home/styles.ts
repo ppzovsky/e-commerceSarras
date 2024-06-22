@@ -2,40 +2,9 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainHomeContainer: {
-    width: 365,
-    height: 850,
-    marginBottom: '40%',
-    justifyContent: 'space-evenly',
+    flex: 1,
+    backgroundColor: '#151515',
     alignItems: 'center',
-  },
-  iconInput: {
-    width: '100%',
-    height: 150,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  innerIcon: {
-    backgroundColor: 'white',
-    width: '55%',
-    height: '60%',
-    alignContent:'center'
-  },
-  iconPosition: {
-    height: '32%',
-    width: '12%',
-    backgroundColor: 'white',
-    borderTopLeftRadius: 25,
-    borderBottomLeftRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  input: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderBottomRightRadius: 25,
-    borderTopRightRadius: 25,
-    width:'60%',
   },
   introTextContainer: {
     marginTop: '20%',
@@ -43,15 +12,16 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     color: 'white',
-    fontSize: 20
+    fontSize: 25
   },
   boldUser: {
     fontWeight: 'bold'
   },
   textOperation: {
     color: 'white',
-    marginBottom: -10,
-    marginTop: 20
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: '5%'
   }, 
   containerCrudButtons: {
     width: '100%',
@@ -78,79 +48,11 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     flexWrap: 'wrap'
   },
-  mainProductContainer: {
-    gap: 10,
-    marginBottom: '15%'
-  },
-  productContainer: {
-    width: '90%',
-    flexDirection: 'row',
-    backgroundColor: '#232327',
-    gap: 10,
-    borderBottomRightRadius: 15,
-    borderTopRightRadius: 15,
-  },
-  imgProduct: {
-    width: '25%',
-    height: '100%',
-    backgroundColor: 'white',
-    borderBottomLeftRadius: 15,
-    borderTopLeftRadius: 15
-  },
-  textProductInfo: {
-    color: 'white',
-    marginBottom: 10,
-  },
-  productInfo: {
-    width: '95%',
-    alignContent: 'center',
-    alignItems: 'center',
-  },
-  innerTextProduct: {
-    padding: 3,
-    color:'white'
-  },
-  fontChange: {
-    color: 'gray'
-  },
-  navBar: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    height: '7%',
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-    justifyContent: 'flex-end',
-    backgroundColor: '#2B2E2F', 
-  },
-  innerContainerNav: {
-    flexDirection: 'row',
-    backgroundColor: '#232327',
-    width: '100%',
-    height: '90%',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    borderTopLeftRadius: 40,
-    borderTopRightRadius: 40,
-  },  
-  mainButtonSearch: {
-    width: '90%',
-    height: '100%',
-    borderRadius: 100,
-    backgroundColor: '#FFCB11',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  backgroundButtonSearch: {
-    marginTop: -60,
-    width: '15%',
-    height: '100%',
-    borderRadius: 100,
-    backgroundColor: '#313638',
-    justifyContent: 'center',
-    alignItems: 'center',
-    elevation: 5
-  },
+  teste:{
+    flex: 0.9,
+    backgroundColor: '#151515',
+    paddingVertical: 15,
+  }
 })
 
 export default styles;

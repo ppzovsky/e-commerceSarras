@@ -3,10 +3,11 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   mainContainerLogin: {
     flex: 1,
-    width: '75%',
+    width: '100%',
     height: '50%',
     alignSelf: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: '#151515'
   },
   textEntry: {
     alignSelf: 'center',
@@ -15,9 +16,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   formContainer: {
-    width: '100%',
+    width: '75%',
     height: 400,
     justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   label: {
     color: 'white',

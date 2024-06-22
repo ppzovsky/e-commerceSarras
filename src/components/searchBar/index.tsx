@@ -3,7 +3,7 @@ import { View, TextInput } from 'react-native';
 import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
 
-const SearchBar = ({searchQuery, setChangeText}) => {
+const SearchBar = ({searchQuery, setChangeText, focus}:any) => {
 
    
   return (
@@ -14,6 +14,7 @@ const SearchBar = ({searchQuery, setChangeText}) => {
       <TextInput style={styles.input}  
         value={searchQuery}
         onChangeText={setChangeText}
+        autoFocus={focus}
         />
     </View>
   )

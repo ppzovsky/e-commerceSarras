@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
-const index = () => {
+const Index = ({ navigation }: any) => { 
   const [text, setText] = useState('');
 
   return (
@@ -24,12 +25,12 @@ const index = () => {
               onChangeText={(text) => setText(text)}
             />
           </View>
-          <TouchableOpacity style={styles.buttonLogin}>
+          <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.replace("Inicio")}>
             <Text style={styles.buttonLoginText}>Login</Text>
-          </TouchableOpacity>    
+          </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   )
 }
 
-export default index
+export default Index

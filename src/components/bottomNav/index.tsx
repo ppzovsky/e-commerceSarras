@@ -4,10 +4,11 @@ import styles from './styles';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
-
+import { useNavigation } from '@react-navigation/native';
 
 const NavBar = () => {
 
+  const navigation = useNavigation();
   const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
@@ -35,15 +36,15 @@ const NavBar = () => {
       {!keyboardVisible && (
     <KeyboardAvoidingView behavior="padding" style={styles.navBar}>
         <View style={styles.innerContainerNav}>
-          <TouchableOpacity>
+          <TouchableOpacity  onPress={() => navigation.navigate("Home")}>
           <Ionicons name="home-outline" size={30} color="#FFCB11" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.backgroundButtonSearch}>
+          <TouchableOpacity style={styles.backgroundButtonSearch}  onPress={() => navigation.navigate("CadastroProduto")}>
             <View style={styles.mainButtonSearch}>
               <AntDesign name="barcode" size={30} color="black" />
             </View>
           </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity  onPress={() => navigation.navigate("Perfil")}>
             <SimpleLineIcons name="user" size={30} color="#FFCB11" />
             </TouchableOpacity>
         </View>

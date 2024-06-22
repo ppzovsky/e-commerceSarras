@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { getProdutos } from '../../components/crud/crud';
+import ListaProduto from '../../components/flatlist';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
-import { AntDesign } from '@expo/vector-icons';
-import NavBar from '../../components/bottomNav/index'
+import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
+import { HomeProps } from '../../routes/tabNavigation';
 
-const index = () => {
+const Home = ({ route }: HomeProps) => {
+
+  const navigation = useNavigation();
+  
   const User = 'Usuario'
+
+  const { produtos } = getProdutos();
 
   return (
     <>
@@ -15,69 +22,39 @@ const index = () => {
         <Text style={styles.welcomeText}>Olá</Text>
         <Text style={[styles.welcomeText, styles.boldUser]}>{User}</Text>
       </View>
-
-      <SearchBar />
-          
+      <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
+      <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
+      <TouchableOpacity
+        style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}
+        onPress={() => navigation.navigate("Search")}
+      />
+    </View>
       <Text style={styles.textOperation}>Qual a operação desejada?</Text>
       <View style={styles.containerCrudButtons}>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Cadastre um novo produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("CadastroProduto")}>
+          <Text style={styles.textCrudButton}>Cadastrar produto</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Ver Produtos Cadastrados</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Catalogo")}>
+          <Text style={styles.textCrudButton}>Ver Produtos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Edite um produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
+          <Text style={styles.textCrudButton}>Editar produto</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Remova um produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
+          <Text style={styles.textCrudButton}>Remover produto</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.productInfo}>
-        <Text style={styles.textProductInfo}>Produtos com baixo estoque:</Text>
-        <View style={styles.mainProductContainer}>
-          <View style={styles.productContainer}>
-            <Image
-            source={require('../../../assets/orphHeadPhone.jpg')}
-            style={styles.imgProduct}
-            resizeMode="contain"
-            />
-            <View>
-              <Text style={styles.innerTextProduct}>
-                Snopy Headphone
-              </Text>
-              <Text style={[styles.innerTextProduct, styles.fontChange]}>
-                Snopy SN- BT96 Pretty Back Bluetooth Headphone
-              </Text>
-              <Text style={styles.innerTextProduct}>
-                R$98,76
-              </Text>
-            </View>
-          </View>
-          <View style={styles.productContainer}>
-            <Image
-            source={require('../../../assets/orphHeadPhone.jpg')}
-            style={styles.imgProduct}
-            resizeMode="contain"
-            />
-            <View>
-              <Text style={styles.innerTextProduct}>
-                Snopy Headphone
-              </Text>
-              <Text style={[styles.innerTextProduct, styles.fontChange]}>
-                Snopy SN- BT96 Pretty Back Bluetooth Headphone
-              </Text>
-              <Text style={styles.innerTextProduct}>
-                R$98,76
-              </Text>
-            </View>
-          </View>
-                </View>
-        </View>
     </ScrollView>
-    <NavBar />
+    <View style={styles.teste}>
+        <Text>Produtos com estoque baixo</Text>
+        {produtos.length > 0 ? (
+            <ListaProduto listaprodutos={produtos}/>
+        ) : (
+            <Text>Carregando produtos...</Text>
+        )}
+    </View>
     </>
   )
 }
 
-export default index
+export default Home

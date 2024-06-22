@@ -3,8 +3,16 @@ import SearchBar from "../../components/searchBar";
 import { getProdutos } from "../../components/crud/crud";
 import { useState, useEffect } from "react";
 import ListaProduto from "../../components/flatlist";
+import { SearchProps } from "../../routes/tabNavigation";
 
-export default function Search() {
+interface item{ 
+  id: number;
+  nome: string;
+  preco: number;
+  imagem: string;
+}
+
+export default function Search({ route}: SearchProps) {
 
 const { produtos } = getProdutos();
 const [searchQuery, setSearchQuery] = useState('');
@@ -23,7 +31,7 @@ const [filteredProducts, setFilteredProducts] = useState(produtos);
 
   return (
     <View>
-      <SearchBar searchQuery={searchQuery} setChangeText={setSearchQuery}/>
+      <SearchBar searchQuery={searchQuery} setChangeText={setSearchQuery} focus={true}/>
       <ListaProduto listaprodutos={filteredProducts}/>
     </View>
   );
