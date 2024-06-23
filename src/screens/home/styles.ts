@@ -2,15 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainHomeContainer: {
-<<<<<<< HEAD
-    flex: 1,
-    backgroundColor: '#151515',
-=======
     width: '100%',
     height: 800,
     marginBottom: '40%',
     justifyContent: 'space-evenly',
->>>>>>> origin/kayque
     alignItems: 'center',
   },
   introTextContainer: {
@@ -26,15 +21,9 @@ const styles = StyleSheet.create({
   },
   textOperation: {
     color: 'white',
-<<<<<<< HEAD
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: '5%'
-=======
     marginBottom: 5,
     marginTop: 15,
     alignSelf: 'center'
->>>>>>> origin/kayque
   }, 
   containerCrudButtons: {
     width: '100%',
@@ -61,13 +50,6 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     flexWrap: 'wrap'
   },
-<<<<<<< HEAD
-  teste:{
-    flex: 0.9,
-    backgroundColor: '#151515',
-    paddingVertical: 15,
-  }
-=======
   mainProductContainer: {
     gap: 10,
     marginBottom: '30%',
@@ -142,7 +124,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     elevation: 5
   },
->>>>>>> origin/kayque
 })
 
 export default styles;

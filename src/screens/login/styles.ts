@@ -2,19 +2,10 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainContainerLogin: {
-<<<<<<< HEAD
-    flex: 1,
-    width: '100%',
-    height: '50%',
-    alignSelf: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#151515'
-=======
     width: '100%',
     height: 825,
     justifyContent: 'center',
     alignItems: 'center',
->>>>>>> origin/kayque
   },
   textEntry: {
     alignSelf: 'center',
@@ -23,11 +14,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   formContainer: {
-<<<<<<< HEAD
-    width: '75%',
-=======
     width: '85%',
->>>>>>> origin/kayque
     height: 400,
     justifyContent: 'space-between',
     alignSelf: 'center',

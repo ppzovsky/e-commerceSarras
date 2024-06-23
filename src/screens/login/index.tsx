@@ -3,14 +3,11 @@ import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingVi
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 
-<<<<<<< HEAD
 const Index = ({ navigation }: any) => { 
   const [text, setText] = useState('');
-=======
 const index = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
->>>>>>> origin/kayque
 
   return (
   
@@ -32,11 +29,9 @@ const index = () => {
               secureTextEntry
             />
           </View>
-<<<<<<< HEAD
           <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.replace("Inicio")}>
             <Text style={styles.buttonLoginText}>Login</Text>
           </TouchableOpacity>
-=======
           <View style={styles.buttons}>
             <TouchableOpacity style={styles.buttonLogin}>
               <Text style={styles.buttonLoginText}>Login</Text>
@@ -45,10 +40,10 @@ const index = () => {
               <Text style={styles.buttonLoginText}>Registre-se</Text>
             </TouchableOpacity>
           </View>
->>>>>>> origin/kayque
       </View>
     </ScrollView>
   )
 }
+}
 
-export default Index
+export default Index;
