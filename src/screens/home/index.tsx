@@ -2,13 +2,15 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
-import { AntDesign } from '@expo/vector-icons';
-import NavBar from '../../components/bottomNav/index'
+import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import ListaProduto from '../../components/flatlist/index'
 
 
-const index = () => {
+const Home = ({ route }: HomeProps) => {
+
+  const navigation = useNavigation();
+  
   const User = 'Usuario'
   const [produtos, setProdutos] = useState([]);
 
@@ -26,6 +28,8 @@ const index = () => {
     getProdutos();
 }, []);
 
+  const { produtos } = getProdutos();
+
   return (
     <>
     <View style={styles.mainHomeContainer}>
@@ -33,22 +37,26 @@ const index = () => {
         <Text style={styles.welcomeText}>Olá</Text>
         <Text style={[styles.welcomeText, styles.boldUser]}>{User}</Text>
       </View>
-
-      <SearchBar />
-          
+      <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
+      <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
+      <TouchableOpacity
+        style={{ position: 'absolute', top: 0, bottom: 0, left: 0, right: 0 }}
+        onPress={() => navigation.navigate("Search")}
+      />
+    </View>
       <Text style={styles.textOperation}>Qual a operação desejada?</Text>
       <View style={styles.containerCrudButtons}>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Cadastre um novo produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("CadastroProduto")}>
+          <Text style={styles.textCrudButton}>Cadastrar produto</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Ver Produtos Cadastrados</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Catalogo")}>
+          <Text style={styles.textCrudButton}>Ver Produtos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Edite um produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
+          <Text style={styles.textCrudButton}>Editar produto</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons}>
-          <Text style={styles.textCrudButton}>Remova um produto</Text>
+        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
+          <Text style={styles.textCrudButton}>Remover produto</Text>
         </TouchableOpacity>
       </View>
       <View style={styles.productInfo}>
@@ -69,4 +77,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Home

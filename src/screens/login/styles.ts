@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 400,
     justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   label: {
     color: 'white',

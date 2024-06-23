@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const index = () => {
   const [email, setEmail] = useState('');

@@ -8,42 +8,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  iconInput: {
-    width: '100%',
-    height: 150,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  innerIcon: {
-    backgroundColor: 'white',
-    width: '55%',
-    height: '60%',
-    alignContent:'center'
-  },
-  iconPosition: {
-    height: '32%',
-    width: '12%',
-    backgroundColor: 'white',
-    borderTopLeftRadius: 25,
-    borderBottomLeftRadius: 25,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  input: {
-    backgroundColor: 'white',
-    padding: 10,
-    borderBottomRightRadius: 25,
-    borderTopRightRadius: 25,
-    width:'60%',
-  },
   introTextContainer: {
     marginTop: '20%',
     width: '90%'
   },
   welcomeText: {
     color: 'white',
-    fontSize: 20
+    fontSize: 25
   },
   boldUser: {
     fontWeight: 'bold'

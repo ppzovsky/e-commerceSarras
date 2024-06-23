@@ -3,7 +3,6 @@ import CardProduto from '../cardProduto/index';
 import {styles} from './styles';
 
 export default function ListaProduto({listaprodutos}:any){
-    
     const produtos = ({item}:any) => {
         return(
             <CardProduto
