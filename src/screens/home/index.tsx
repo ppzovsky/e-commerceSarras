@@ -6,6 +6,7 @@ import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
+import CardProduto from '../../components/cardProduto';
 
 const Home = ({ route }: HomeProps) => {
 
@@ -14,6 +15,9 @@ const Home = ({ route }: HomeProps) => {
   const User = 'Usuario'
 
   const { produtos } = getProdutos();
+  const ordenaProdutos = produtos.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
+  const produtosBaixoestoque = ordenaProdutos.slice(0, 10);
+
 
   return (
     <>
@@ -44,20 +48,14 @@ const Home = ({ route }: HomeProps) => {
           <Text style={styles.textCrudButton}>Remover produto</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.productInfo}>
-        <Text style={styles.textProductInfo}>Produtos com baixo estoque:</Text>
-        <View style={styles.mainProductContainer}>
-        <View style={styles.containerProdutos}>
-                {produtos.length > 0 ? (
-                    <ListaProduto listaprodutos={produtos}/>
-                ) : (
-                    <Text>Carregando produtos...</Text>
-                )}
-            </View>
-        </View>
-        </View>
-    </View>
-    <NavBar />
+      <View style={styles.list}>
+        <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
+        {produtosBaixoestoque.map((item) => (
+          <CardProduto item={item}/>
+      ))}
+        <View style={{height: 100, backgroundColor:'#151515'}}></View>
+      </View>
+    </ScrollView>
     </>
   )
 }

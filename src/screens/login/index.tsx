@@ -2,12 +2,17 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
+import { LoginProps } from '../../routes/stack';
 
-const Index = ({ navigation }: any) => { 
+const Index = ({ navigation }: LoginProps) => { 
   const [text, setText] = useState('');
-const index = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const fazerLogin = () => {
+    navigation.replace('Inicio');
+  }
+
 
   return (
   
@@ -29,11 +34,8 @@ const index = () => {
               secureTextEntry
             />
           </View>
-          <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.replace("Inicio")}>
-            <Text style={styles.buttonLoginText}>Login</Text>
-          </TouchableOpacity>
           <View style={styles.buttons}>
-            <TouchableOpacity style={styles.buttonLogin}>
+            <TouchableOpacity style={styles.buttonLogin} onPress={fazerLogin}>
               <Text style={styles.buttonLoginText}>Login</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.buttonLogin}>
@@ -44,6 +46,4 @@ const index = () => {
     </ScrollView>
   )
 }
-}
-
 export default Index;

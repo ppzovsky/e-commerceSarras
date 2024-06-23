@@ -3,13 +3,12 @@ import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from "@react-navigation/stack";
-// import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./styles";
 import axios from "axios";
+import { PerfilProps } from "../../routes/tabNavigation";
 
-const Stack = createStackNavigator();
-
-const PerfilScreen: React.FC = () => {
+const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
+  
   const [usuario, setUsuario] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -30,21 +29,21 @@ const PerfilScreen: React.FC = () => {
 
 
   const logout = async () => {
-    try {
-      const res = await axios.post( '', {
-        token: '',
-      });
-      if (res.status === 200) {
+    // try {
+    //   const res = await axios.post( '', {
+    //     token: '',
+    //   });
+    //   if (res.status === 200) {
         
-        Alert.alert("Deslogado com sucesso");
-        navigation.navigate("Home");
-      } else {
-        Alert.alert('Falha ao deslogar')
-      }
-    } catch (error) {
-      console.error(error);
-      Alert.alert('');
-    }
+    //     Alert.alert("Deslogado com sucesso");
+        navigation.replace("Login");
+    //   } else {
+    //     Alert.alert('Falha ao deslogar')
+    //   }
+    // } catch (error) {
+    //   console.error(error);
+    //   Alert.alert('');
+    // }
   };
 
   const updatePassword = async () => {
@@ -72,12 +71,6 @@ const PerfilScreen: React.FC = () => {
 
   return (
     <LinearGradient colors={["#1c1c1c", "#000"]} style={styles.container}>
-      {/* <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-left" size={24} color="#fff" />
-        </TouchableOpacity>
-        <Text style={styles.headerText}>Voltar</Text>
-      </View> */}
 
       <View style={styles.profileContainer}>
         <Text style={styles.title}>Perfil</Text>
@@ -145,16 +138,6 @@ const PerfilScreen: React.FC = () => {
   );
 };
 
-const PerfilStack = () => {
-  return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-    >
-      <Stack.Screen name="Perfil" component={PerfilScreen} />
-    </Stack.Navigator>
-  );
-};
+export default PerfilScreen;
 
-export default PerfilStack;
+
