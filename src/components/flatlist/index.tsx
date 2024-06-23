@@ -10,7 +10,6 @@ export default function ListaProduto({listaprodutos}:any){
             />
         )
     }
-    
     return(
         <FlatList
                 data={listaprodutos}
