@@ -8,7 +8,7 @@ import SearchBar from '../../components/searchBar/index'
 import ListaProduto from '../../components/flatlist/index'
 
 
-const index = () => {
+const Index = () => {
   const User = 'Usuario'
   const [produtos, setProdutos] = useState([]);
 
@@ -69,4 +69,4 @@ const index = () => {
   )
 }
 
-export default index
+export default Index

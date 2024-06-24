@@ -11,6 +11,7 @@ const Stack = createStackNavigator();
 
 const PerfilScreen: React.FC = () => {
   const [usuario, setUsuario] = useState("");
+  const [usuariosLogado] = useState("1")
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [senha, setSenha] = useState("");
@@ -18,7 +19,7 @@ const PerfilScreen: React.FC = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    axios.get("https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/")
+    axios.get("https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/" + usuariosLogado)
       .then(res => {
         const { usuario, email, username, senha } = res.data;
         setUsuario(usuario);
@@ -54,8 +55,10 @@ const PerfilScreen: React.FC = () => {
       senhaAntiga: senha,
       novaSenha: novaSenha,
     })
-    if (res.status === 200) {
+    if (novaSenha === null) {
       Alert.alert('Senha atualizada!');
+      } else if (res.status === 200){
+        Alert.alert('Digite uma nova senha')
     } else {
       Alert.alert('Falha ao atualizar a senha');
     }
