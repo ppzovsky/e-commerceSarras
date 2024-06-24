@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { getProdutos } from '../../services/crud/crud';
 import ListaProduto from '../../components/flatlist';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView,KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
 import CardProduto from '../../components/cardProduto';
+import { UserContext } from '../../components/useContext/userProfile';
 
 const Home = ({ route }: HomeProps) => {
 
   const navigation = useNavigation();
   
-  const User = 'Usuario'
+  const { usuario } = useContext(UserContext);
 
   const { produtos } = getProdutos();
   const ordenaProdutos = produtos.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
@@ -24,7 +25,7 @@ const Home = ({ route }: HomeProps) => {
     <ScrollView contentContainerStyle={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{User}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
