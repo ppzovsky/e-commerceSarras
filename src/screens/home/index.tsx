@@ -6,6 +6,7 @@ import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
 import CardProduto from '../../components/cardProduto';
+import { UserContext } from '../../components/useContext/userProfile';
 
 const Home = ({ route }: HomeProps) => {
 
@@ -59,7 +60,7 @@ const Home = ({ route }: HomeProps) => {
     <ScrollView contentContainerStyle={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{User}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
