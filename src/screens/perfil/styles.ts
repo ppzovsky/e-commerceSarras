@@ -3,22 +3,9 @@ import { StyleSheet } from "react-native";
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#1c1c1c", // Dark background
-  },
-  header: {
-    width: '100%',
-    paddingTop: 40,
-    paddingHorizontal: 20,
-    flexDirection: 'row',
-    alignItems: 'center',
+    justifyContent: "space-evenly",
     backgroundColor: "#1c1c1c",
-  },
-  headerText: {
-    color: '#fff',
-    fontSize: 18,
-    marginLeft: 10,
   },
   profileContainer: {
     width: "80%",
@@ -74,6 +61,10 @@ export default StyleSheet.create({
     fontWeight: '400',
     color: "#fff",
     fontSize: 14,
-    textDecorationLine: "none", // To indicate it's a clickable link
+    textDecorationLine: "none",
+  },
+  margem: {
+    flex: 0.10,
+    width: "90%",
   },
 });
