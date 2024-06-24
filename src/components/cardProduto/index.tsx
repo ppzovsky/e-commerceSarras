@@ -1,10 +1,29 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert, Modal, Button } from "react-native";
 import {styles} from "./styles";
+import { useState } from "react";
+import { FontAwesome } from '@expo/vector-icons';
 
-export default function CardProduto({item}: any){
+export default function CardProduto({item, deletarProduto}: any){
 
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    function opcoesProduto() {
+        setModalVisible(true);
+    }
+    
+    const deletar = (id: any) => {
+        deletarProduto(id);
+        setModalVisible(false);
+    }
+
+    function abreProduto() {
+        alert('Abre')
+    }
+    
     return (
-        <TouchableOpacity>
+        <>
+        <TouchableOpacity onLongPress={opcoesProduto} onPress={abreProduto}>
             <View style={styles.container}>
                 <Image
                 style={styles.image}
@@ -17,5 +36,26 @@ export default function CardProduto({item}: any){
                 </View>
             </View> 
         </TouchableOpacity>
+        <Modal
+        transparent={true}
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modal}>
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.buttonClose}>
+                <FontAwesome name="close" size={24} color="white" />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=> deletar(item.id)} style={styles.button}>
+                <Text style={styles.textButton}>Excluir Produto</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => setModalVisible(false)} style={styles.button}>
+                <Text style={styles.textButton}>Editar Produto</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+        </>
     )
 }

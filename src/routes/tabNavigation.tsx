@@ -11,7 +11,6 @@ import NavBar from '../components/bottomNav/index';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
-  createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 
 type StackNavigation = {
