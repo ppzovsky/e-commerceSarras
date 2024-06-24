@@ -2,7 +2,8 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainContainerLogin: {
-    width: '100%',
+    flex: 1,
+    backgroundColor: '#151515',
     height: 825,
     justifyContent: 'center',
     alignItems: 'center',
@@ -17,6 +18,7 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 400,
     justifyContent: 'space-between',
+    alignSelf: 'center',
   },
   label: {
     color: 'white',
