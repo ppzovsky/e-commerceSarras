@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import SearchBar from "../../components/searchBar";
-import { getProdutos } from "../../components/crud/crud";
+import { getProdutos } from "../../services/crud/crud";
 import { useState, useEffect } from "react";
 import ListaProduto from "../../components/flatlist";
 import { SearchProps } from "../../routes/tabNavigation";

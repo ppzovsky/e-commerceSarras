@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getProdutos } from '../../components/crud/crud';
+import { getProdutos } from '../../services/crud/crud';
 import ListaProduto from '../../components/flatlist';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
