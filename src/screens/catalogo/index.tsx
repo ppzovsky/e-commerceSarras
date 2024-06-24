@@ -4,7 +4,7 @@ import ListaProduto from '../../components/flatlist/index';
 import SearchBar from '../../components/searchBar/index'
 import { styles } from './styles';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { getProdutos } from '../../components/crud/crud'
+import { getProdutos } from '../../services/crud/crud'
 export default function Produtos() {
 
     const { produtos } = getProdutos();

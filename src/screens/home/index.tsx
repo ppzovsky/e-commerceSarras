@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getProdutos } from '../../components/crud/crud';
+import { getProdutos } from '../../services/crud/crud';
 import ListaProduto from '../../components/flatlist';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
+import CardProduto from '../../components/cardProduto';
 
 const Home = ({ route }: HomeProps) => {
 
@@ -14,6 +15,9 @@ const Home = ({ route }: HomeProps) => {
   const User = 'Usuario'
 
   const { produtos } = getProdutos();
+  const ordenaProdutos = produtos.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
+  const produtosBaixoestoque = ordenaProdutos.slice(0, 10);
+
 
   return (
     <>
@@ -44,15 +48,14 @@ const Home = ({ route }: HomeProps) => {
           <Text style={styles.textCrudButton}>Remover produto</Text>
         </TouchableOpacity>
       </View>
+      <View style={styles.list}>
+        <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
+        {produtosBaixoestoque.map((item) => (
+          <CardProduto item={item}/>
+      ))}
+        <View style={{height: 100, backgroundColor:'#151515'}}></View>
+      </View>
     </ScrollView>
-    <View style={styles.teste}>
-        <Text>Produtos com estoque baixo</Text>
-        {produtos.length > 0 ? (
-            <ListaProduto listaprodutos={produtos}/>
-        ) : (
-            <Text>Carregando produtos...</Text>
-        )}
-    </View>
     </>
   )
 }

@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainHomeContainer: {
-    flex: 1,
     backgroundColor: '#151515',
     alignItems: 'center',
   },
@@ -21,7 +20,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: '5%'
+    marginBottom: '5%',
+    alignSelf: 'center'
   }, 
   containerCrudButtons: {
     width: '100%',
@@ -48,10 +48,11 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     flexWrap: 'wrap'
   },
-  teste:{
-    flex: 0.9,
+  list:{
+    width: '100%',
     backgroundColor: '#151515',
     paddingVertical: 15,
+    gap: 15
   }
 })
 
