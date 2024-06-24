@@ -1,17 +1,21 @@
-import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Image, Keyboard } from 'react-native';
+import ListaProduto from '../../components/flatlist/index'
+import React, { useState, useEffect, useContext } from 'react';
+import { getProdutos } from '../../services/crud/crud';
+import { View, Text, TextInput, TouchableOpacity, ScrollView,KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
-import SearchBar from '../../components/searchBar/index'
-import ListaProduto from '../../components/flatlist/index'
+import SearchBar from '../../components/searchBar/index';
+import { HomeProps } from '../../routes/tabNavigation';
+import CardProduto from '../../components/cardProduto/index';
+import { UserContext } from '../../components/useContext/userProfile';
 
 
 const Home = ({ route }: HomeProps) => {
 
   const navigation = useNavigation();
   
-  const User = 'Usuario'
+
   const [produtos, setProdutos] = useState([]);
 
   useEffect(() => {
@@ -28,6 +32,9 @@ const Home = ({ route }: HomeProps) => {
     getProdutos();
 }, []);
 
+  const { usuario } = useContext(UserContext);
+
+
   const { produtos } = getProdutos();
 
   return (
@@ -35,7 +42,7 @@ const Home = ({ route }: HomeProps) => {
     <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{User}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
