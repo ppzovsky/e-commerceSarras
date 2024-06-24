@@ -7,11 +7,12 @@ import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
 import CardProduto from '../../components/cardProduto';
 import { UserContext } from '../../components/useContext/userProfile';
+import { useContext } from 'react';
 
 const Home = ({ route }: HomeProps) => {
 
   const navigation = useNavigation();
-  const User = 'Usuario'
+  const { usuario } = useContext(UserContext);
   const [produtos, setProdutos] = useState([]);
   const [produtosBaixoestoque, setProdutosBaixoestoque] = useState([])
 

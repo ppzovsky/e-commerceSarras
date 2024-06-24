@@ -10,6 +10,7 @@ const Index = ({ navigation }: LoginProps) => {
   const [password, setPassword] = useState('');
 
   const fazerLogin = () => {
+    
     navigation.replace('Inicio');
   }
 
