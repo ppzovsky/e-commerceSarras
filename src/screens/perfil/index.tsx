@@ -69,7 +69,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
   };
 
   const criadores = () => {
-    alert("Navegar para a página de Criadores do App");
+    navigation.navigate("Criadores");
   };
 
   return (
@@ -136,7 +136,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
         <Text style={styles.creatorsButtonText}>Criadores do App</Text>
       </TouchableOpacity>
       </View>
-
+      <View style={styles.margem} />
     </LinearGradient>
   );
 };
