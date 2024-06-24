@@ -56,6 +56,5 @@ export const styles = StyleSheet.create({
   margem: {
     flex: 0.10,
     width: "90%",
-    backgroundColor: "red",
   },
 });
