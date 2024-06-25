@@ -4,36 +4,40 @@ import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import styles from "./styles";
 import axios from "axios";
+import { cadastroUsuario } from "../../services/crud";
+
+export type usuario ={
+  usuario: string;
+  username: string;
+  email: string;
+  senha: string;
+}
 
 const RegistroScreen: React.FC = () => {
-  const [nome, setNome] = useState("");
+  const [usuario, setUsuario] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const navigation = useNavigation();
-
+  
   const handleRegistro = async () => {
     if (senha !== confirmarSenha) {
       Alert.alert("As senhas não coincidem!");
       return;
     }
-
+    const user = {
+      usuario,
+      username,
+      email,
+      senha,
+    }
     try {
-      const res = await axios.post('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/', {
-        nome: nome,
-        email: email,
-        senha: senha,
-      });
-
-      if (res.status === 201) {
-        Alert.alert("Usuário cadastrado com sucesso!");
+      const res = await cadastroUsuario(user);
         navigation.replace("Login");
-      } else {
-        Alert.alert("Falha ao cadastrar o usuário");
-      }
     } catch (error) {
       console.error(error);
-      Alert.alert("Erro ao cadastrar usuário");
+      Alert.alert("Erro no cadastrar");
     }
   };
 
@@ -43,15 +47,26 @@ const RegistroScreen: React.FC = () => {
         <Text style={styles.title}>Cadastro</Text>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.label}>Nome</Text>
+          <Text style={styles.label}>Usuario</Text>
           <TextInput
             style={styles.input}
-            value={nome}
-            onChangeText={setNome}
-            placeholder="Nome"
+            value={usuario}
+            onChangeText={setUsuario}
+            placeholder="usuario"
             placeholderTextColor="#888"
           />
         </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.label}>Username</Text>
+          <TextInput
+            style={styles.input}
+            value={username}
+            onChangeText={setUsername}
+            placeholder="Username"
+            placeholderTextColor="#888"
+          />
+        </View>
+
 
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Email</Text>

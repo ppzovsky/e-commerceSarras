@@ -69,3 +69,14 @@ export async function buscaPorId(id: number) {
     console.error('Erro ao acessar produto:', error);
   }
 }
+
+export async function cadastroUsuario(usuario: any) { 
+  try {
+    const res = await axios.post('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios', usuario);
+    console.log('Usuario cadastrado:', res.data);
+    Alert.alert('Usuario cadastrado com sucesso!');
+  } catch (error) {
+    console.error('Erro ao cadastrar usuario:', error);
+    Alert.alert('Erro', 'Erro ao cadastrar usuario. Por favor, tente novamente.');
+  }
+}

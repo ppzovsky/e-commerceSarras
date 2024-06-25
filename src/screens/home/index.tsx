@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { getProdutos } from '../../services/crud/crud';
+import { getProdutos } from '../../services/crud';
 import ListaProduto from '../../components/flatlist/index';
 import { View, Text, TextInput, TouchableOpacity, ScrollView,KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
@@ -8,7 +8,7 @@ import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
 import CardProduto from '../../components/cardProduto';
 import { UserContext } from '../../components/useContext/userProfile';
-import { useContext } from 'react';
+
 
 const Home = ({ route }: HomeProps) => {
 

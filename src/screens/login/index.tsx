@@ -64,7 +64,7 @@ const Index = ({ navigation }: LoginProps) => {
             <TouchableOpacity style={styles.buttonLogin} onPress={fazerLogin}>
               <Text style={styles.buttonLoginText}>Login</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.buttonLogin}>
+            <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Cadastro')}>
               <Text style={styles.buttonLoginText}>Registre-se</Text>
             </TouchableOpacity>
           </View>
