@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     gap: 5
   },
   nome:{
-    color: '#E1E1E1',
+    color: '#FFCB11',
     fontSize: 14,
     fontWeight: 'bold',
   },
