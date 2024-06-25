@@ -11,7 +11,6 @@ import NavBar from '../components/bottomNav/index';
 import {
   NativeStackNavigationProp,
   NativeStackScreenProps,
-  createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 
 type StackNavigation = {
@@ -19,7 +18,7 @@ type StackNavigation = {
   Perfil: { id: number};
   Catalogo: { info: string};
   Criadores: undefined;
-  Produto: { codigo: string };
+  Produto: { id: number };
   Search: { info: string };
   CadastroProduto: undefined;
 };

@@ -3,7 +3,7 @@ import { View, TextInput, Image, Text, TouchableOpacity, Alert, ActivityIndicato
 import * as ImagePicker from 'expo-image-picker';
 import * as FileSystem from 'expo-file-system';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { buscaPorCordigo, cadastrarProduto } from '../../services/crud/crud';
+import { buscaPorCordigo, cadastrarProduto } from '../../services/crud';
 import styles from './styles';
 
 interface Produto {

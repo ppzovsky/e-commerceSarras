@@ -19,5 +19,10 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         color: 'white',
+    }, 
+    header:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingHorizontal: 10
     }
 });
