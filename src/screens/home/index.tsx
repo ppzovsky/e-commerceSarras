@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { getProdutos } from '../../services/crud/crud';
-import ListaProduto from '../../components/flatlist';
+import ListaProduto from '../../components/flatlist/index';
 import { View, Text, TextInput, TouchableOpacity, ScrollView,KeyboardAvoidingView, Image, Keyboard } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
@@ -22,7 +22,7 @@ const Home = ({ route }: HomeProps) => {
 
   return (
     <>
-    <ScrollView contentContainerStyle={styles.mainHomeContainer}>
+    <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
         <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
@@ -42,21 +42,13 @@ const Home = ({ route }: HomeProps) => {
         <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Catalogo")}>
           <Text style={styles.textCrudButton}>Ver Produtos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Editar produto</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Remover produto</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.list}>
         <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
-        {produtosBaixoestoque.map((item) => (
-          <CardProduto item={item}/>
-      ))}
+        <ListaProduto listaprodutos={produtosBaixoestoque}/>
         <View style={{height: 100, backgroundColor:'#151515'}}></View>
       </View>
-    </ScrollView>
+    </View>
     </>
   )
 }

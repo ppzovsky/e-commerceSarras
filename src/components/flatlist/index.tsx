@@ -7,11 +7,13 @@ export default function ListaProduto({listaprodutos}:any){
         return(
             <CardProduto
                 item={item}
+
             />
         )
     }
     return(
         <FlatList
+                style={styles.container}
                 data={listaprodutos}
                 renderItem={produtos}
                 ItemSeparatorComponent={() => <View style={{ height: 15 }} />}
