@@ -35,7 +35,7 @@ export default function Search({ route}: SearchProps) {
     if (searchQuery === '') {
       setFilteredProducts(produtos);
     } else { 
-      const filtered = produtos.filter(item =>
+      const filtered = produtos.filter((item: item) =>
         item.nome.toLowerCase().includes(searchQuery.toLowerCase())
       );
       setFilteredProducts(filtered);

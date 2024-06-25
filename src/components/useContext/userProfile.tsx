@@ -12,7 +12,7 @@ const defaultValue: UserContextType = {
 
 export const UserContext = createContext<UserContextType>(defaultValue);
 
-export const UserProvider = ({ children }) => {
+export const UserProvider = ({ children }: any) => {
   const [usuario, setUsuario] = useState<string | null>(null);
 
   return (

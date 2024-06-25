@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import ListaProduto from '../../components/flatlist/index';
 import SearchBar from '../../components/searchBar/index'
 import { styles } from './styles';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { getProdutos } from '../../services/crud'
+import { getProdutos, deleteProduto } from '../../services/crud'
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
-import { deleteProduto } from '../../services/crud';
+import { TabTypes } from '../../routes/tabNavigation';
 
 
 export default function Produtos() {
@@ -24,7 +23,7 @@ export default function Produtos() {
       pegarProdutos();
     }, [])
   );
-    const navigation = useNavigation();
+    const navigation = useNavigation<TabTypes>();
 
     const handleDeleteProduto = (produtoId:any) => {
         deleteProduto(produtoId);

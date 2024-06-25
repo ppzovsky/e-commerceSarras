@@ -1,13 +1,13 @@
-import { View, Text, Image, TouchableOpacity, Alert, Modal, Button } from "react-native";
+import { View, Text, Image, TouchableOpacity, Modal } from "react-native";
 import {styles} from "./styles";
 import { useState } from "react";
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
-import { StackTypes } from "../../routes/tabNavigation";
+import { TabTypes } from "../../routes/tabNavigation";
 
 export default function CardProduto({item, deletarProduto}: any){
 
-    const navigation = useNavigation<StackTypes>();
+    const navigation = useNavigation<TabTypes>();
     const [modalVisible, setModalVisible] = useState(false);
 
     function opcoesProduto() {

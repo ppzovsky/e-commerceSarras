@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { getProdutos, deleteProduto } from '../../services/crud';
-import { View, Text, Alert, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
-import { HomeProps } from '../../routes/tabNavigation';
+import { HomeProps, TabTypes } from '../../routes/tabNavigation';
 import { UserContext } from '../../components/useContext/userProfile';
+import ListaProduto from '../../components/flatlist';
 
 const Home = ({ route }: HomeProps) => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<TabTypes>();
   const { usuario } = useContext(UserContext);
   const [produtos, setProdutos] = useState([]);
   const [produtosBaixoestoque, setProdutosBaixoestoque] = useState([])
@@ -17,7 +18,7 @@ const Home = ({ route }: HomeProps) => {
   const pegarProdutos = () => {
     getProdutos().then((data) => {
       setProdutos(data);
-      const ordenaProdutos = data.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
+      const ordenaProdutos = data.sort((a: any, b: any) => a.qtdEstoque - b.qtdEstoque);
       setProdutosBaixoestoque(ordenaProdutos.slice(0, 10))
     });
   }
@@ -30,7 +31,7 @@ const Home = ({ route }: HomeProps) => {
 
 
   const deletarProduto = (id: any) => {
-    const index = produtos.findIndex((item) => item.id === id);
+    const index = produtos.findIndex((item: any) => item.id === id);
     if (index !== -1) {
       try{
         Alert.alert(
@@ -80,7 +81,6 @@ const Home = ({ route }: HomeProps) => {
       <View style={styles.list}>
         <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
         <ListaProduto listaprodutos={produtosBaixoestoque}/>
-        <View style={{height: 100, backgroundColor:'#151515'}}></View>
       </View>
     </View>
     </>

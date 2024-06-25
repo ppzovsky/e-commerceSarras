@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity, Linking, Alert } from 'react-native';
 import React from 'react';
 import { styles } from './styles';
-import AntDesign from 'react-native-vector-icons/AntDesign';
+import { AntDesign } from '@expo/vector-icons';
 
 const openLink = async (url: string) => {
   const supported = await Linking.canOpenURL(url);

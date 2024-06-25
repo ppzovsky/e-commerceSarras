@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
 import { LoginProps } from '../../routes/stack';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import axios from 'axios';
@@ -11,9 +10,6 @@ const Index = ({ navigation }: LoginProps) => {
   const [usuarios, setUsuarios] = useState([]);
   const [emailInput, setEmailInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
-  const [password, setPassword] = useState('');
   
 
   useEffect(() => {
@@ -27,7 +23,7 @@ const Index = ({ navigation }: LoginProps) => {
   }, []);
 
   const fazerLogin = () => {
-    const usuarioEncontrado = usuarios.find(usuario => usuario.email === emailInput && usuario.senha === passwordInput);
+    const usuarioEncontrado:any = usuarios.find((usuario : any) => usuario.email === emailInput && usuario.senha === passwordInput);
 
     if (usuarioEncontrado) {
       setUsuario(usuarioEncontrado.username);

@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './styles';
 import { ProdutoProps } from '../../routes/tabNavigation';
-import { buscaPorId } from '../../services/crud';
+import { buscaPorId, deleteProduto } from '../../services/crud';
 import { useFocusEffect } from '@react-navigation/native';
 
 export type produto = {
@@ -35,12 +35,31 @@ export default function Produto({route} : ProdutoProps) {
     defineProduto();
   });
 
+  const deletarProduto = (id: any) => {
+        Alert.alert(
+            "Confirmação",
+            "Tem certeza que deseja deletar este produto?",
+            [
+              {
+                text: "Não",
+                onPress: () => console.log("Ação cancelada"),
+                style: "cancel"
+              },
+              { 
+                text: "Sim", 
+                onPress: () => {deleteProduto(id);}  
+              }
+            ],
+            { cancelable: false }
+          );
+  }
+
 
   const renderEstrelas = (avaliacao: number) => {
     const estrelas = [];
     for (let i = 1; i <= 5; i++) {
       estrelas.push(
-        <Icon
+        <FontAwesome
           key={i}
           name={i <= avaliacao ? 'star' : 'star-o'}
           size={15}
@@ -58,11 +77,11 @@ export default function Produto({route} : ProdutoProps) {
           <Text style={styles.nome}>{produto?.nome}</Text>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.editButton}>
-              <Icon name="pencil" size={18} color="#fff" />
+              <FontAwesome name="pencil" size={18} color="#fff" />
               <Text style={styles.buttonText}>Editar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.deleteButton}>
-              <Icon name="trash-o" size={18} color="#fff" />
+            <TouchableOpacity style={styles.deleteButton} onPress={() => deletarProduto(produto?.id)}>
+              <FontAwesome name="trash-o" size={18} color="#fff" />
               <Text style={styles.buttonText}>Apagar</Text>
             </TouchableOpacity>
           </View>

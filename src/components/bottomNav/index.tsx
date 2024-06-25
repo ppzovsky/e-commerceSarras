@@ -5,10 +5,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { TabTypes } from '../../routes/tabNavigation';
 
 const NavBar = () => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<TabTypes>();
   const [keyboardVisible, setKeyboardVisible] = useState(false);
 
   useEffect(() => {
