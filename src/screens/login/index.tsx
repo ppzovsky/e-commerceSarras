@@ -30,8 +30,9 @@ const Index = ({ navigation }: LoginProps) => {
     const usuarioEncontrado = usuarios.find(usuario => usuario.email === emailInput && usuario.senha === passwordInput);
 
     if (usuarioEncontrado) {
-      setUsuario(usuarioEncontrado.username);
+      setUsuario(usuarioEncontrado);
       alert('Login realizado com sucesso!');
+      console.log(usuarioEncontrado)
       navigation.replace('Inicio');
     } else {
       alert('Email ou senha incorretos. Tente novamente.');

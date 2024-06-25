@@ -1,31 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { createStackNavigator } from "@react-navigation/stack";
-import styles from "./styles";
-import axios from "axios";
 import { PerfilProps } from "../../routes/tabNavigation";
+import axios from "axios";
+import styles from "./styles";
+import { UserContext } from "../../components/useContext/userProfile";
 
 const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
   
-  const [usuario, setUsuario] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [senha, setSenha] = useState("");
+  const  usuarioInfo  = useContext(UserContext);
+  const [usuario, setUsuario] = useState(usuarioInfo.usuario?.usuario || "");
+  const [email, setEmail] = useState(usuarioInfo.usuario?.email || "");
+  const [username, setUsername] = useState(usuarioInfo.usuario?.username || "");
+  const [senha, setSenha] = useState(usuarioInfo.usuario?.senha || "")
   const [novaSenha, setNovaSenha] = useState("");
   const navigation = useNavigation();
+  
 
-  useEffect(() => {
-    axios.get("https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/")
-      .then(res => {
-        const { usuario, email, username, senha } = res.data;
-        setUsuario(usuario);
-        setEmail(email);
-        setUsername(username);
-        setSenha(senha);
-    })
-  }, [])
+  
+  
 
 
   const logout = async () => {
@@ -72,7 +67,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
   return (
     <LinearGradient colors={["#1c1c1c", "#000"]} style={styles.container}>
 
-      <View style={styles.profileContainer}>
+<View style={styles.profileContainer}>
         <Text style={styles.title}>Perfil</Text>
         <View style={styles.inputContainer}>
           <Text style={styles.label}>Usuário</Text>

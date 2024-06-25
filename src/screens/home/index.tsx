@@ -25,7 +25,7 @@ const Home = ({ route }: HomeProps) => {
     <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario?.username}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
