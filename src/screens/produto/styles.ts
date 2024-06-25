@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
     buttonContainer: {
       flexDirection: 'row',
       marginLeft: 10,
-      top: 36
+      top: 36,
     },
     editButton: {
       alignItems: 'center',
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
       alignItems: 'center',
     },
     buttonText: {
-      color: '#fff',
+      color: 'white',
       marginTop: 5,
     },
     avaliacaoContainer: {

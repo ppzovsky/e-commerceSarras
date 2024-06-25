@@ -22,7 +22,7 @@ export default function Produto() {
           key={i}
           name={i <= avaliacao ? 'star' : 'star-o'}
           size={15}
-          color="white"
+          color="#FFCB11"
         />
       );
     }
@@ -36,11 +36,11 @@ export default function Produto() {
           <Text style={styles.nome}>{produto.nome}</Text>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.editButton}>
-              <Icon name="pencil" size={18} color="#fff" />
+              <Icon name="pencil" size={18} color="#FFCB11" />
               <Text style={styles.buttonText}>Editar</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.deleteButton}>
-              <Icon name="trash-o" size={18} color="#fff" />
+              <Icon name="trash-o" size={18} color="#FFCB11" />
               <Text style={styles.buttonText}>Apagar</Text>
             </TouchableOpacity>
           </View>
