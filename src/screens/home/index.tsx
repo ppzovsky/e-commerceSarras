@@ -5,7 +5,7 @@ import styles from './styles';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps, TabTypes } from '../../routes/tabNavigation';
-import { UserContext } from '../../components/useContext/userProfile';
+import { UserContext } from '../../contexts/userProfile';
 import ListaProduto from '../../components/flatlist';
 
 const Home = ({ route }: HomeProps) => {

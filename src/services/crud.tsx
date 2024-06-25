@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import axios, { AxiosError } from 'axios';
-import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
 export async function getProdutos() {
       try {
@@ -46,7 +44,7 @@ export async function cadastrarProduto(novoProduto: any) {
   }
 }
 
-export async function deleteProduto(codigo: string) {
+export async function deleteProduto(codigo: number) {
   
   try{
     const response = await axios.delete(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${codigo}`);
@@ -67,5 +65,15 @@ export async function buscaPorId(id: number) {
   }
   catch (error) {
     console.error('Erro ao acessar produto:', error);
+  }
+}
+
+export async function atualizarProduto(id: number, novoProduto: any) {
+  try{
+    const response = await axios.put(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${id}`, novoProduto);
+    Alert.alert('Produto atualizado com sucesso!')
+  }
+  catch (error) {
+    console.error('Erro ao atualizar produto:', error);
   }
 }

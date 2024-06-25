@@ -3,7 +3,7 @@ import { LoginProps } from '../../routes/stack';
 import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import axios from 'axios';
 import styles from './styles';
-import { useUser } from '../../components/useContext/userProfile';
+import { useUser } from '../../contexts/userProfile';
 
 const Index = ({ navigation }: LoginProps) => { 
   const { setUsuario } = useUser();
@@ -27,7 +27,6 @@ const Index = ({ navigation }: LoginProps) => {
 
     if (usuarioEncontrado) {
       setUsuario(usuarioEncontrado);
-      alert('Login realizado com sucesso!');
       console.log(usuarioEncontrado)
       navigation.replace('Inicio');
     } else {

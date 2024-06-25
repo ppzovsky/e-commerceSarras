@@ -1,14 +1,14 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-import { createStackNavigator } from "@react-navigation/stack";
-import { PerfilProps } from "../../routes/tabNavigation";
+import { PerfilProps, TabTypes } from "../../routes/tabNavigation";
+import { StackTypes } from "../../routes/stack";
 import axios from "axios";
 import styles from "./styles";
-import { UserContext } from "../../components/useContext/userProfile";
+import { UserContext } from "../../contexts/userProfile";
 
-const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
+export default function PerfilScreen( {route}: PerfilProps){
   
   const  usuarioInfo  = useContext(UserContext);
   const [usuario, setUsuario] = useState(usuarioInfo.usuario?.usuario || "");
@@ -16,29 +16,11 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
   const [username, setUsername] = useState(usuarioInfo.usuario?.username || "");
   const [senha, setSenha] = useState(usuarioInfo.usuario?.senha || "")
   const [novaSenha, setNovaSenha] = useState("");
-  const navigation = useNavigation();
+  const navigationLogout = useNavigation<StackTypes>();
+  const navigation = useNavigation<TabTypes>();
   
-
-  
-  
-
-
   const logout = async () => {
-    // try {
-    //   const res = await axios.post( '', {
-    //     token: '',
-    //   });
-    //   if (res.status === 200) {
-        
-    //     Alert.alert("Deslogado com sucesso");
-        navigation.replace("Login");
-    //   } else {
-    //     Alert.alert('Falha ao deslogar')
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    //   Alert.alert('');
-    // }
+        navigationLogout.replace("Login");
   };
 
   const updatePassword = async () => {
@@ -133,6 +115,5 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
   );
 };
 
-export default PerfilScreen;
 
 

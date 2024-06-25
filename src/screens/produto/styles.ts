@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
       marginBottom: 10,
     },
     nome: {
-      fontSize: 20,
+      fontSize: 25,
       fontWeight: 'bold',
       color: '#fff',
       flex: 1,
@@ -57,11 +57,21 @@ export const styles = StyleSheet.create({
       right: 5,
       bottom: 1
     },
+    imageContainer: {
+      width: '110%',
+      height: '45%',
+      marginBottom: 20,
+      overflow: 'hidden',
+      backgroundColor: 'green',
+      borderRadius: 10,
+      alignSelf: 'center',
+      borderStyle: 'solid',
+      borderWidth: 5,
+      borderColor: '#777'
+    },
     image: {
       width: '100%',
-      height: 200,
-      borderRadius: 10,
-      marginBottom: 10,
+      height: '100%',
     },
     section: {
       marginBottom: 15,
@@ -95,4 +105,9 @@ export const styles = StyleSheet.create({
       fontSize: 16,
       color: '#777',
     },
+    input:{
+      fontSize: 22,
+      color: '#FFCC11',
+      fontWeight: 'bold',
+    }
   });
