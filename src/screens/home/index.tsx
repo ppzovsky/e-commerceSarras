@@ -1,13 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { getProdutos, deleteProduto } from '../../services/crud';
 import { View, Text, Alert, TouchableOpacity, ScrollView } from 'react-native';
 import styles from './styles';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps } from '../../routes/tabNavigation';
-import CardProduto from '../../components/cardProduto';
 import { UserContext } from '../../components/useContext/userProfile';
-import { useContext } from 'react';
 
 const Home = ({ route }: HomeProps) => {
 
@@ -58,7 +56,7 @@ const Home = ({ route }: HomeProps) => {
 
   return (
     <>
-    <ScrollView contentContainerStyle={styles.mainHomeContainer}>
+    <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
         <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
@@ -78,22 +76,13 @@ const Home = ({ route }: HomeProps) => {
         <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Catalogo")}>
           <Text style={styles.textCrudButton}>Ver Produtos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Editar produto</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Remover produto</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.list}>
         <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
-        {/* <ListaProduto produtos={produtosBaixoestoque}/> */}
-        {produtosBaixoestoque.length>0 && produtosBaixoestoque.map((item) => (
-          <CardProduto item={item} deletarProduto={deletarProduto} key= {item.id}/>
-      ))}
+        <ListaProduto listaprodutos={produtosBaixoestoque}/>
         <View style={{height: 100, backgroundColor:'#151515'}}></View>
       </View>
-    </ScrollView>
+    </View>
     </>
   )
 }

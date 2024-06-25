@@ -8,7 +8,7 @@ export default function App() {
   return (
       <UserProvider>
         <NavigationContainer>
-             <StatusBar
+            <StatusBar
               barStyle="light-content"
               backgroundColor="#FFCB11"
             />
