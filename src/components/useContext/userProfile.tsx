@@ -1,24 +1,25 @@
-import React, { createContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { createContext, useState, useContext } from 'react';
 
+interface UserContextType {
+  usuario: string | null;
+  setUsuario: React.Dispatch<React.SetStateAction<string | null>>;
+}
 
-export const UserContext = createContext( { usuario: '' } );
+const defaultValue: UserContextType = {
+  usuario: null,
+  setUsuario: () => {},
+};
 
+export const UserContext = createContext<UserContextType>(defaultValue);
 
-export const UserProvider = ({ children }: any) => {
-  const [usuario, setUsuario] = useState('');
-
-  useEffect(() => {
-    axios.get("https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/")
-      .then(res => {
-        const { usuario } = res.data;
-        setUsuario(usuario);
-      })
-  }, []);
+export const UserProvider = ({ children }) => {
+  const [usuario, setUsuario] = useState<string | null>(null);
 
   return (
-    <UserContext.Provider value={{ usuario }}>
+    <UserContext.Provider value={{ usuario, setUsuario }}>
       {children}
     </UserContext.Provider>
   );
 };
+
+export const useUser = () => useContext(UserContext);

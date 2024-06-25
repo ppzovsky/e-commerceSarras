@@ -15,8 +15,6 @@ const Home = ({ route }: HomeProps) => {
   
   const { usuario } = useContext(UserContext);
 
-  const user = 'sarras';
-
   const { produtos } = getProdutos();
   const ordenaProdutos = produtos.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
   const produtosBaixoestoque = ordenaProdutos.slice(0, 10);
@@ -27,7 +25,7 @@ const Home = ({ route }: HomeProps) => {
     <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{user}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
