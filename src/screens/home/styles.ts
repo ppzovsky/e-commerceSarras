@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   introTextContainer: {
-    marginTop: '20%',
+    marginTop: '5%',
     width: '90%'
   },
   welcomeText: {
@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     fontSize: 25
   },
   boldUser: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#FFCB11'
   },
   textOperation: {
     color: 'white',
