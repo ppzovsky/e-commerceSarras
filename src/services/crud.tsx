@@ -49,7 +49,6 @@ export async function cadastrarProduto(novoProduto: any) {
 export async function deleteProduto(codigo: string) {
   
   try{
-    console.log(codigo);
     const response = await axios.delete(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${codigo}`);
     console.log('Produto deletado:', response.data);
     Alert.alert('Produto deletado com sucesso!')
@@ -57,5 +56,16 @@ export async function deleteProduto(codigo: string) {
   catch (error) {
     console.error('Erro ao deletar produto:', error);
     Alert.alert('Erro', 'Erro ao deletar produto. Por favor, tente novamente.');
+  }
+}
+
+export async function buscaPorId(id: number) {
+  try{
+    const response = await axios.get(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${id}`);
+    const produto = response.data;
+    return produto;
+  }
+  catch (error) {
+    console.error('Erro ao acessar produto:', error);
   }
 }

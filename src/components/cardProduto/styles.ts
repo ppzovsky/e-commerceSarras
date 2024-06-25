@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     width: '90%',
-    height: 100,
+    height: 126,
     borderRadius: 24.32,
     backgroundColor: '#232327',
     flexDirection: 'row',
@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     gap: 5
   },
   nome:{
-    color: '#E1E1E1',
+    color: '#FFCB11',
     fontSize: 14,
     fontWeight: 'bold',
   },

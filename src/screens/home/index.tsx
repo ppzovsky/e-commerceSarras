@@ -1,17 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { getProdutos, deleteProduto } from '../../services/crud';
-import { View, Text, Alert, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
-import { HomeProps } from '../../routes/tabNavigation';
-import CardProduto from '../../components/cardProduto';
+import { HomeProps, TabTypes } from '../../routes/tabNavigation';
 import { UserContext } from '../../components/useContext/userProfile';
-import { useContext } from 'react';
+import ListaProduto from '../../components/flatlist';
 
 const Home = ({ route }: HomeProps) => {
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<TabTypes>();
   const { usuario } = useContext(UserContext);
   const [produtos, setProdutos] = useState([]);
   const [produtosBaixoestoque, setProdutosBaixoestoque] = useState([])
@@ -19,7 +18,7 @@ const Home = ({ route }: HomeProps) => {
   const pegarProdutos = () => {
     getProdutos().then((data) => {
       setProdutos(data);
-      const ordenaProdutos = data.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
+      const ordenaProdutos = data.sort((a: any, b: any) => a.qtdEstoque - b.qtdEstoque);
       setProdutosBaixoestoque(ordenaProdutos.slice(0, 10))
     });
   }
@@ -32,7 +31,7 @@ const Home = ({ route }: HomeProps) => {
 
 
   const deletarProduto = (id: any) => {
-    const index = produtos.findIndex((item) => item.id === id);
+    const index = produtos.findIndex((item: any) => item.id === id);
     if (index !== -1) {
       try{
         Alert.alert(
@@ -58,10 +57,10 @@ const Home = ({ route }: HomeProps) => {
 
   return (
     <>
-    <ScrollView contentContainerStyle={styles.mainHomeContainer}>
+    <View style={styles.mainHomeContainer}>
       <View style={styles.introTextContainer}>
         <Text style={styles.welcomeText}>Olá</Text>
-        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario}</Text>
+        <Text style={[styles.welcomeText, styles.boldUser]}>{usuario?.username}</Text>
       </View>
       <View style={{ position: 'relative', justifyContent: 'center', width: '100%'}}>
       <SearchBar searchQuery="" setChangeText={() => {}} focus={false} />
@@ -78,22 +77,12 @@ const Home = ({ route }: HomeProps) => {
         <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Catalogo")}>
           <Text style={styles.textCrudButton}>Ver Produtos</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Editar produto</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.crudButtons} onPress={() => navigation.navigate("Search")}>
-          <Text style={styles.textCrudButton}>Remover produto</Text>
-        </TouchableOpacity>
       </View>
       <View style={styles.list}>
         <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
-        {/* <ListaProduto produtos={produtosBaixoestoque}/> */}
-        {produtosBaixoestoque.length>0 && produtosBaixoestoque.map((item) => (
-          <CardProduto item={item} deletarProduto={deletarProduto} key= {item.id}/>
-      ))}
-        <View style={{height: 100, backgroundColor:'#151515'}}></View>
+        <ListaProduto listaprodutos={produtosBaixoestoque}/>
       </View>
-    </ScrollView>
+    </View>
     </>
   )
 }

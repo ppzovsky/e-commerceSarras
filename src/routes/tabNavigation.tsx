@@ -13,26 +13,26 @@ import {
   NativeStackScreenProps,
 } from "@react-navigation/native-stack";
 
-type StackNavigation = {
-  Home: {id: number};
-  Perfil: { id: number};
-  Catalogo: { info: string};
+type TabNavigation = {
+  Home: undefined;
+  Perfil: undefined;
+  Catalogo: undefined;
   Criadores: undefined;
-  Produto: { codigo: string };
-  Search: { info: string };
+  Produto: { id: number };
+  Search: undefined;
   CadastroProduto: undefined;
 };
 
-export type StackTypes = NativeStackNavigationProp<StackNavigation>;
-export type HomeProps = NativeStackScreenProps<StackNavigation, "Home">;
-export type PerfilProps = NativeStackScreenProps<StackNavigation, "Perfil">;
-export type CatalogoProps = NativeStackScreenProps<StackNavigation, "Catalogo">;
-export type CriadoresProps = NativeStackScreenProps<StackNavigation, "Criadores">;
-export type ProdutoProps = NativeStackScreenProps<StackNavigation, "Produto">;
-export type SearchProps = NativeStackScreenProps<StackNavigation, "Search">;
-export type CadastroProps = NativeStackScreenProps<StackNavigation, "CadastroProduto">;
+export type TabTypes = NativeStackNavigationProp<TabNavigation>;
+export type HomeProps = NativeStackScreenProps<TabNavigation, "Home">;
+export type PerfilProps = NativeStackScreenProps<TabNavigation, "Perfil">;
+export type CatalogoProps = NativeStackScreenProps<TabNavigation, "Catalogo">;
+export type CriadoresProps = NativeStackScreenProps<TabNavigation, "Criadores">;
+export type ProdutoProps = NativeStackScreenProps<TabNavigation, "Produto">;
+export type SearchProps = NativeStackScreenProps<TabNavigation, "Search">;
+export type CadastroProps = NativeStackScreenProps<TabNavigation, "CadastroProduto">;
 
-const { Navigator, Screen } = createBottomTabNavigator<StackNavigation>();
+const { Navigator, Screen } = createBottomTabNavigator<TabNavigation>();
 
 const StackComponent = () => {
   return (
