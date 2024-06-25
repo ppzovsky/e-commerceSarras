@@ -77,11 +77,11 @@ export default function Produto({route} : ProdutoProps) {
           <Text style={styles.nome}>{produto?.nome}</Text>
           <View style={styles.buttonContainer}>
             <TouchableOpacity style={styles.editButton}>
-              <FontAwesome name="pencil" size={18} color="#fff" />
+              <FontAwesome name="pencil" size={18} color="#FFCB11" />
               <Text style={styles.buttonText}>Editar</Text>
             </TouchableOpacity>
             <TouchableOpacity style={styles.deleteButton} onPress={() => deletarProduto(produto?.id)}>
-              <FontAwesome name="trash-o" size={18} color="#fff" />
+              <FontAwesome name="trash-o" size={18} color="#FFCB11" />
               <Text style={styles.buttonText}>Apagar</Text>
             </TouchableOpacity>
           </View>

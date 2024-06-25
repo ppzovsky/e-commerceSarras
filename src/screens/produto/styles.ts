@@ -58,8 +58,9 @@ export const styles = StyleSheet.create({
       bottom: 1
     },
     image: {
-      width: '100%',
-      height: 200,
+      alignSelf: 'center',
+      width: '120%',
+      height: 270,
       borderRadius: 10,
       marginBottom: 10,
     },
