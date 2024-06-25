@@ -15,6 +15,8 @@ const Home = ({ route }: HomeProps) => {
   
   const { usuario } = useContext(UserContext);
 
+
+
   const { produtos } = getProdutos();
   const ordenaProdutos = produtos.sort((a, b) => a.qtdEstoque - b.qtdEstoque);
   const produtosBaixoestoque = ordenaProdutos.slice(0, 10);
