@@ -75,7 +75,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
             style={styles.input}
             value={usuario}
             onChangeText={setUsuario}
-            placeholderTextColor="#888"
+            placeholderTextColor="#FFCB11"
           />
         </View>
         <View style={styles.inputContainer}>
@@ -84,7 +84,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
             style={styles.input}
             value={email}
             onChangeText={setEmail}
-            placeholderTextColor="#888"
+            placeholderTextColor="#FFCB11"
             keyboardType="email-address"
           />
         </View>
@@ -94,7 +94,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
             style={styles.input}
             value={username}
             onChangeText={setUsername}
-            placeholderTextColor="#888"
+            placeholderTextColor="#FFCB11"
           />
         </View>
         <View style={styles.inputContainer}>
@@ -104,7 +104,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
             value={senha}
             onChangeText={setSenha}
             secureTextEntry={true}
-            placeholderTextColor="#888"
+            placeholderTextColor="#FFCB11"
           />
         </View>
         <View style={styles.inputContainer}>
@@ -115,7 +115,7 @@ const PerfilScreen: React.FC = ( {route}: PerfilProps) => {
             onChangeText={setNovaSenha}
             secureTextEntry={true}
             placeholder="Nova Senha"
-            placeholderTextColor="#888"
+            placeholderTextColor="#FFCB11"
           />
           <Text style={styles.changePassword} onPress={updatePassword}>
             alterar senha
