@@ -50,7 +50,6 @@ seu-repositorio/
 
 Este projeto serve como base para o desenvolvimento de um gerenciador de produtos completo em um ecommerce. A utilização do Mockapi simplifica o processo inicial, mas em um ambiente de produção, você precisará substituí-lo por um backend real com um banco de dados persistente.
 
-<<<<<<< HEAD
 Sinta-se à vontade para personalizar e expandir este projeto de acordo com as necessidades do seu ecommerce.
 
 ### Criadores:
