@@ -1,30 +1,18 @@
 import { useState, useEffect } from 'react';
 import { Alert } from 'react-native';
 import axios, { AxiosError } from 'axios';
+import { get } from 'react-native/Libraries/TurboModule/TurboModuleRegistry';
 
-export const getProdutos = () => {
-  const [produtos, setProdutos] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function getProdutos() {
+export async function getProdutos() {
       try {
         const response = await axios.get('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos');
-        setProdutos(response.data);
+        return response.data;
       } catch (error) {
         alert('Erro ao carregar os produtos');
         console.log(error);
-      } finally {
-        setLoading(false);
       }
     }
 
-    getProdutos();
-  }, []);
-
-  return { produtos, loading, error };
-};
 
 export const buscaPorCordigo = async ({codigo}: {codigo: string}): Promise<boolean> => {
   try {
@@ -46,6 +34,7 @@ export const buscaPorCordigo = async ({codigo}: {codigo: string}): Promise<boole
     return true;
   }
 };
+
 export async function cadastrarProduto(novoProduto: any) {
   try {
     const response = await axios.post('https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos', novoProduto);
@@ -54,5 +43,29 @@ export async function cadastrarProduto(novoProduto: any) {
   } catch (error) {
     console.error('Erro ao cadastrar produto:', error);
     Alert.alert('Erro', 'Erro ao cadastrar produto. Por favor, tente novamente.');
+  }
+}
+
+export async function deleteProduto(codigo: string) {
+  
+  try{
+    const response = await axios.delete(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${codigo}`);
+    console.log('Produto deletado:', response.data);
+    Alert.alert('Produto deletado com sucesso!')
+  }
+  catch (error) {
+    console.error('Erro ao deletar produto:', error);
+    Alert.alert('Erro', 'Erro ao deletar produto. Por favor, tente novamente.');
+  }
+}
+
+export async function buscaPorId(id: number) {
+  try{
+    const response = await axios.get(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Produtos/${id}`);
+    const produto = response.data;
+    return produto;
+  }
+  catch (error) {
+    console.error('Erro ao acessar produto:', error);
   }
 }
