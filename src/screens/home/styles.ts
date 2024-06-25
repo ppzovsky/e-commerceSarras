@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   introTextContainer: {
-    marginTop: '20%',
+    marginTop: '5%',
     width: '90%'
   },
   welcomeText: {
@@ -14,28 +14,29 @@ const styles = StyleSheet.create({
     fontSize: 25
   },
   boldUser: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#FFCB11'
   },
   textOperation: {
     color: 'white',
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: 'bold',
-    marginBottom: '5%',
+    marginBottom: '2%',
     alignSelf: 'center'
   }, 
   containerCrudButtons: {
     width: '100%',
-    height: 170,
+    height: 70,
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 15,
     justifyContent: 'center',
     alignContent: 'center',
-    elevation: 10
+    elevation: 10,
   },
   crudButtons: {
     width: '45%',
-    height: '45%',
+    height: '75%',
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
     width: '100%',
     backgroundColor: '#151515',
     paddingVertical: 15,
-    gap: 15
+    gap: 10,
   }
 })
 

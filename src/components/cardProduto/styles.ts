@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     gap: 5
   },
   nome:{
-    color: '#E1E1E1',
+    color: '#FFCB11',
     fontSize: 14,
     fontWeight: 'bold',
   },
@@ -33,4 +33,36 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     fontWeight: 'bold',
   },
+  modalContainer:{
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modal:{
+    width: 300,
+    padding: 15,
+    paddingBottom: 20,
+    backgroundColor: '#151515',
+    borderRadius: 10,
+    alignItems: 'center',
+    gap: 10
+  },
+  button:{
+    backgroundColor: '#FFCB11',
+    width: '60%',
+    height: 35,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonClose:{
+    alignSelf: 'flex-end'
+  },
+  textButton:{
+    color: '#151515',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+
 });
