@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   mainHomeContainer: {
+    flex: 1,
     backgroundColor: '#151515',
     alignItems: 'center',
   },
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap'
   },
   list:{
+    flex: 1,
     width: '100%',
     backgroundColor: '#151515',
     paddingVertical: 15,
