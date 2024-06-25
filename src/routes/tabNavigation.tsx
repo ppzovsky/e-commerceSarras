@@ -18,7 +18,7 @@ type StackNavigation = {
   Perfil: { id: number};
   Catalogo: { info: string};
   Criadores: undefined;
-  Produto: { codigo: string };
+  Produto: { id: number };
   Search: { info: string };
   CadastroProduto: undefined;
 };
