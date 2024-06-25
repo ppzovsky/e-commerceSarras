@@ -30,8 +30,10 @@ export default function PerfilScreen( {route}: PerfilProps){
       senhaAntiga: senha,
       novaSenha: novaSenha,
     })
-    if (res.status === 200) {
+    if (novaSenha === null) {
       Alert.alert('Senha atualizada!');
+      } else if (res.status === 200){
+        Alert.alert('Digite uma nova senha')
     } else {
       Alert.alert('Falha ao atualizar a senha');
     }
