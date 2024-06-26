@@ -6,7 +6,7 @@ import { styles } from './styles';
 import { getProdutos, deleteProduto } from '../../services/crud'
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { TabTypes } from '../../routes/tabNavigation';
-
+import { ActivityIndicator } from 'react-native';
 
 export default function Produtos() {
 
@@ -46,7 +46,7 @@ export default function Produtos() {
                 {produtos.length > 0 ? (
                     <ListaProduto listaprodutos={produtos}/>
                 ) : (
-                    <Text>Carregando produtos...</Text>
+                  <ActivityIndicator size="large" color="#ffcb11" />
                 )}
             </View>
         </View>

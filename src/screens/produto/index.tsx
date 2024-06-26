@@ -1,10 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { View, Text, Image, ScrollView, TouchableOpacity, Alert, TextInput } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { styles } from './styles';
-import { ProdutoProps } from '../../routes/tabNavigation';
+import { ProdutoProps, TabTypes } from '../../routes/tabNavigation';
 import { deleteProduto, atualizarProduto, getProdutos } from '../../services/crud';
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 export type produto = {
   id: number;
@@ -18,6 +19,8 @@ export type produto = {
 
 export default function Produto({ route }: ProdutoProps) {
   const props = route.params;
+  const navigation = useNavigation<TabTypes>();
+
 
   const [produto, setProduto] = React.useState<produto | null>(null);
   const [produtos, setProdutos] = React.useState<produto[]>([]);
@@ -71,6 +74,7 @@ export default function Produto({ route }: ProdutoProps) {
             try {
               await deleteProduto(id);
               listaProdutos();
+              navigation.navigate('Catalogo');
             } catch (error) {
               console.log('Erro ao deletar produto', error);
             }
@@ -117,7 +121,7 @@ export default function Produto({ route }: ProdutoProps) {
   if (!produto) {
     return (
       <View style={styles.container}>
-        <Text>Carregando...</Text>
+        <ActivityIndicator size="large" color="#ffcb11" />
       </View>
     );
   }

@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { getProdutos, deleteProduto } from '../../services/crud';
 import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import styles from './styles';
+import { ActivityIndicator } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import SearchBar from '../../components/searchBar/index'
 import { HomeProps, TabTypes } from '../../routes/tabNavigation';
@@ -80,7 +81,11 @@ const Home = ({ route }: HomeProps) => {
       </View>
       <View style={styles.list}>
         <Text style={styles.textOperation}>Produtos com estoque baixo</Text>
-        <ListaProduto listaprodutos={produtosBaixoestoque}/>
+        {produtos.length > 0 ? (
+                    <ListaProduto listaprodutos={produtosBaixoestoque}/>
+                ) : (
+                    <ActivityIndicator size="large" color="#ffcb11" />
+                )}
       </View>
     </View>
     </>
