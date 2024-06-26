@@ -8,6 +8,7 @@ import SearchBar from '../../components/searchBar/index'
 import { HomeProps, TabTypes } from '../../routes/tabNavigation';
 import { UserContext } from '../../contexts/userProfile';
 import ListaProduto from '../../components/flatlist';
+import LottieView from 'lottie-react-native';
 
 const Home = ({ route }: HomeProps) => {
 
@@ -84,7 +85,14 @@ const Home = ({ route }: HomeProps) => {
         {produtos.length > 0 ? (
                     <ListaProduto listaprodutos={produtosBaixoestoque}/>
                 ) : (
-                    <ActivityIndicator size="large" color="#ffcb11" />
+                  <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: '#151515' }}>
+                    <LottieView 
+                        source={require('../../../assets/Animation - 1719438788173.json')}
+                        style={{ width: 300, height: 300}}
+                        autoPlay
+                        loop
+                    />
+                  </View>
                 )}
       </View>
     </View>

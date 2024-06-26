@@ -7,6 +7,7 @@ import { getProdutos, deleteProduto } from '../../services/crud'
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import { TabTypes } from '../../routes/tabNavigation';
 import { ActivityIndicator } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 export default function Produtos() {
 
@@ -46,7 +47,14 @@ export default function Produtos() {
                 {produtos.length > 0 ? (
                     <ListaProduto listaprodutos={produtos}/>
                 ) : (
-                  <ActivityIndicator size="large" color="#ffcb11" />
+                  <View style={{ justifyContent: 'center', alignItems: 'center', backgroundColor: '#151515' }}>
+                      <LottieView 
+                          source={require('../../../assets/Animation - 1719438788173.json')}
+                          style={{ width: 300, height: 300}}
+                          autoPlay
+                          loop
+                      />
+                  </View>
                 )}
             </View>
         </View>
