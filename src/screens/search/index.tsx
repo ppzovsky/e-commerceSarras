@@ -17,17 +17,18 @@ interface item{
 export default function Search({ route}: SearchProps) {
   const [produtos, setProdutos] = useState([]);
 
-    const pegarProdutos = () => {
-      getProdutos().then((data) => {
-        setProdutos(data);
-      });
-    }
+  const pegarProdutos = () => {
+    getProdutos().then((data) => {
+      setProdutos(data);
+    });   
+  }
 
-    useFocusEffect(
-      React.useCallback(() => { 
-        pegarProdutos();
-      }, [])
-    );
+  useFocusEffect(
+    React.useCallback(() => { 
+      pegarProdutos();
+    }, [])
+  );
+
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(produtos);
 

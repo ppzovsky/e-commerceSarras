@@ -25,10 +25,12 @@ export default function PerfilScreen( {route}: PerfilProps){
 
   const updatePassword = async () => {
     try{
-    const res = await axios.post('', {
+    const res = await axios.put(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/${usuarioInfo.usuario?.id}`, {
+      id: usuarioInfo.usuario?.id,
+      usuario: usuario,
       email: email,
-      senhaAntiga: senha,
-      novaSenha: novaSenha,
+      username: username,
+      senha: novaSenha,
     })
     if (novaSenha === null) {
       Alert.alert('Senha atualizada!');
@@ -102,7 +104,7 @@ export default function PerfilScreen( {route}: PerfilProps){
             placeholderTextColor="#FFCB11"
           />
           <Text style={styles.changePassword} onPress={updatePassword}>
-            alterar senha
+            Atualizar Cadastro
           </Text>
         </View>
         <TouchableOpacity style={styles.logoutButton} onPress={logout}>

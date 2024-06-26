@@ -39,8 +39,10 @@ export default StyleSheet.create({
   },
   changePassword: {
     color: "#888",
-    textAlign: "right",
-    marginTop: 5,
+    textAlign: "center",
+    paddingTop: 30,
+    textDecorationLine: "underline",
+    fontSize: 15
   },
   logoutButton: {
     marginTop: 20,

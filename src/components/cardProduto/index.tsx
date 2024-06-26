@@ -5,6 +5,13 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { TabTypes } from "../../routes/tabNavigation";
 
+const formatarPreco = (preco: string) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(Number(preco));
+  };
+
 export default function CardProduto({item, deletarProduto}: any){
 
     const navigation = useNavigation<TabTypes>();
@@ -34,7 +41,7 @@ export default function CardProduto({item, deletarProduto}: any){
                 <View style={styles.texto}>
                     <Text style={styles.nome}>{item.nome}</Text>
                     <Text style={styles.descricao}>{item.descricao}</Text>
-                    <Text style={styles.preco}>R${item.preco}</Text>
+                    <Text style={styles.preco}>{formatarPreco(item.preco)}</Text>
                 </View>
             </View> 
         </TouchableOpacity>

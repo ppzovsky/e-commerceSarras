@@ -17,10 +17,16 @@ export type produto = {
   foto: string;
 };
 
+const formatarPreco = (preco: string) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(Number(preco));
+};
+
 export default function Produto({ route }: ProdutoProps) {
   const props = route.params;
   const navigation = useNavigation<TabTypes>();
-
 
   const [produto, setProduto] = React.useState<produto | null>(null);
   const [produtos, setProdutos] = React.useState<produto[]>([]);
@@ -38,7 +44,7 @@ export default function Produto({ route }: ProdutoProps) {
 
   const defineProduto = async () => {
     try {
-      const produtoEncontrado : any = produtos.find((prod: produto) => prod.id === props.id);
+      const produtoEncontrado: any = produtos.find((prod: produto) => prod.id === props.id);
       setProduto(produtoEncontrado);
       setEditProduto(produtoEncontrado);
     } catch (error) {
@@ -128,6 +134,9 @@ export default function Produto({ route }: ProdutoProps) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+      <View style={{justifyContent: 'flex-start', alignSelf: 'flex-start'}}>
+        <FontAwesome name="arrow-left" size={24} color="#ffcb11" onPress={() => navigation.goBack()} />
+      </View>
       <View style={styles.box}>
         <View style={styles.header}>
           {isEditing ? (
@@ -191,7 +200,7 @@ export default function Produto({ route }: ProdutoProps) {
             />
           ) : (
             <View style={styles.precoContainer}>
-              <Text style={styles.preco}>R${produto?.preco}</Text>
+              <Text style={styles.preco}>{formatarPreco(produto?.preco)}</Text>
               <Text style={styles.codigo}>Cód. {produto?.codigo}</Text>
             </View>
           )}

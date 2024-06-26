@@ -88,3 +88,13 @@ export async function cadastroUsuario(usuario: any) {
     Alert.alert('Erro', 'Erro ao cadastrar usuario. Por favor, tente novamente.');
   }
 }
+
+export async function atualizaUsuario(id: number, novoUsuario: any) {
+  try{
+    const res = await axios.put(`https://6675c1f4a8d2b4d072f15c00.mockapi.io/sarras/Usuarios/${id}`, novoUsuario);
+    Alert.alert('Usuario atualizado com sucesso!');
+  }catch(error){
+    console.error('Erro ao cadastrar usuario:', error);
+    Alert.alert('Erro', 'Erro ao cadastrar usuario. Por favor, tente novamente.');
+  }
+}
